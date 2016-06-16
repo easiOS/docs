@@ -1,0 +1,24 @@
+--- Makefile.orig	2016-06-16 10:43:10.623504824 +0200
++++ Makefile	2016-06-16 10:43:52.396517545 +0200
+@@ -8,7 +8,7 @@
+ PLAT= none
+ 
+ CC= gcc
+-CFLAGS= -O2 -Wall $(MYCFLAGS)
++CFLAGS= -O2 -Wall $(MYCFLAGS) -m32
+ AR= ar rcu
+ RANLIB= ranlib
+ RM= rm -f
+@@ -52,10 +52,10 @@
+ 	$(RANLIB) $@
+ 
+ $(LUA_T): $(LUA_O) $(LUA_A)
+-	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
++	$(CC) -m32 -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
+ 
+ $(LUAC_T): $(LUAC_O) $(LUA_A)
+-	$(CC) -o $@ $(MYLDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
++	$(CC) -m32 -o $@ $(MYLDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
+ 
+ clean:
+ 	$(RM) $(ALL_T) $(ALL_O)
